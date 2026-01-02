@@ -99,6 +99,31 @@ Route::get('/api/posts/{post}', function (Post $post) {
 });
 ```
 
+## Configuration
+### Image Upload location
+The plugin will automatically create a scalable directory structure for all uploaded images and also creates different
+image sizes for the gallery block, using srcset attributes.
+```php
+use Aaix\FilamentEditorJs\Forms\Components\EditorJs;
+EditorJs::make('content')
+        ->imageDisk('s3') // Defaults to 'public'
+        ->imageDirectory('my_photos') // Defaults to 'editorjs-images'
+```
+
+The directory structure would look like this:
+```
+editorjs-images
+└── 0d
+    └── e3
+        └── 1a
+            ├── f2-880d-4e7b-b402-b1b2cc685e6f_1k.webp
+            ├── f2-880d-4e7b-b402-b1b2cc685e6f_2k.webp
+            ├── f2-880d-4e7b-b402-b1b2cc685e6f_3k.webp
+            ├── f2-880d-4e7b-b402-b1b2cc685e6f_4k.webp
+            ├── f2-880d-4e7b-b402-b1b2cc685e6f_500.webp
+            └── f2-880d-4e7b-b402-b1b2cc685e6f_original.jpg
+```
+
 ## Included Tools & Plugins
 
 The editor comes pre-configured with the following block tools:
