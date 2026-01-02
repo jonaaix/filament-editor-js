@@ -108,6 +108,19 @@ The editor comes pre-configured with the following block tools:
 * **Structure:** Table, Collapsible (Accordion).
 * **Media:** Gallery (Masonry & Slider layouts with Lightbox).
 
+```
+@editorjs/checklist
+@editorjs/code
+@editorjs/delimiter
+@editorjs/editorjs
+@editorjs/header
+@editorjs/list
+@editorjs/quote
+@editorjs/table
+@kiberpro/editorjs-gallery
+editorjs-collapsible-block
+```
+
 ## Contributing
 Need another editor.js plugin? Contributions are welcome!
 Please submit a Pull Request or open an issue to discuss your ideas.
