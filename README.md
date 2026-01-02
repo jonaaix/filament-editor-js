@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://github.com/jonaaix/filament-editor-js">
-    <img src="https://raw.githubusercontent.com/jonaaix/filament-editor-js/main/demo.webp" alt="Filament Editor.js Logo" width="170">
-  </a>
-</p>
-
 <h1 align="center">Filament Editor.js</h1>
 
 <p align="center">
@@ -23,6 +17,12 @@
 </p>
 
 ---
+
+<p align="center">
+  <a href="https://github.com/jonaaix/filament-editor-js">
+    <img src="https://raw.githubusercontent.com/jonaaix/filament-editor-js/main/demo.webp" alt="Filament Editor.js Logo">
+  </a>
+</p>
 
 ## Installation
 
