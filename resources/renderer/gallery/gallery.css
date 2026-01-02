@@ -1,0 +1,371 @@
+/* Modern Standard CSS.
+   %scope% wird zur Laufzeit durch den Wrapper-Selector ersetzt.
+*/
+
+%scope% {
+/* --- Global Wrapper --- */
+.gallery-wrapper {
+    margin: 2.5em 0;
+}
+
+/* --- Modern Uppercase Headline --- */
+.gallery-block-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Mehr Abstand zu den Linien */
+    margin-bottom: 2rem;
+    opacity: 1;
+}
+
+.gallery-block-caption__line {
+    flex-grow: 1;
+    height: 1px;
+    background: #e5e7eb;
+    max-width: 60px; /* Kürzere, dezentere Linien */
+}
+
+.gallery-block-caption__text {
+    font-family: inherit; /* Erbt die Sans-Serif Font der App */
+    font-style: normal;   /* Kein Italic mehr */
+    font-size: 0.75rem;   /* Klein & Fein (text-xs/sm) */
+    line-height: 1rem;
+    text-transform: uppercase; /* UPPERCASE */
+    letter-spacing: 0.15em;    /* Viel Abstand (Tracking-widest) */
+    color: #6b7280;       /* Cool Gray 500 */
+    margin: 0;
+    font-weight: 700;     /* Bold */
+}
+
+/* --- Slider Layout --- */
+.gallery-slider__stage {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #f3f4f6;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Buttons nur zeigen wenn Maus drüber ist für Clean-Look */
+    &:hover .gallery-slider__nav {
+        opacity: 1;
+    }
+}
+
+.gallery-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    inset: 0;
+}
+.gallery-slider__image.is-landscape {
+    object-fit: cover;
+}
+
+/* Slider Navigation Buttons (Stage) */
+.gallery-slider__nav {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    color: #1f2937;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    opacity: 0; /* Hidden by default */
+    transition: all 0.2s ease;
+    z-index: 5;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+.gallery-slider__nav--prev { left: 1rem; }
+.gallery-slider__nav--next { right: 1rem; }
+
+.gallery-slider__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    z-index: 4;
+}
+
+.gallery-slider__thumbs {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+
+    /* Smooth Scrollbar hide if wanted, but native is usually fine */
+}
+
+.gallery-slider__thumb {
+    flex: 0 0 80px;
+    height: 60px;
+    border: 2px solid transparent; /* Platzhalter für Outline */
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1; /* UPDATE: Volle Deckkraft */
+    transition: border-color 0.2s;
+
+    &.is-active {
+        border-color: #3b82f6; /* Nur Outline */
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+/* --- Masonry Layout --- */
+.gallery-masonry {
+    column-count: 2;
+    column-gap: 0.5rem;
+    width: 100%;
+    text-align: left;
+
+    @media (min-width: 768px) {
+        column-count: 3;
+    }
+}
+
+.gallery-masonry__item {
+    break-inside: avoid;
+    margin-bottom: 3px;
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: #f3f4f6;
+    width: 100%;
+    display: inline-block;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s;
+    }
+
+    &:hover img {
+        transform: scale(1.03);
+    }
+}
+
+.gallery-masonry__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 1rem 0.5rem 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.gallery-masonry__item:hover .gallery-masonry__overlay {
+    opacity: 1;
+}
+
+/* --- Symmetrical Grid Layout (< 10 Images) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 Columns */
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* 1 Image Special: Full width on Mobile too */
+.gallery-grid:has(.gallery-masonry__item:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* Desktop: 3 Columns */
+    }
+
+    /* --- Special Grid Layouts using :has() --- */
+
+    /* 1 Image: Full width (prevent tiny 33% image) */
+    .gallery-grid:has(.gallery-masonry__item:nth-child(1):last-child) {
+        grid-template-columns: 1fr;
+    }
+
+    /* 2 Images: Split 50/50 */
+    .gallery-grid:has(.gallery-masonry__item:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 4 Images: 2x2 Grid (cleaner than 3+1) */
+    .gallery-grid:has(.gallery-masonry__item:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Item adjustments within the grid */
+.gallery-grid .gallery-masonry__item {
+    width: auto;
+    margin-bottom: 0;
+    aspect-ratio: 1 / 1; /* Square tiles */
+}
+
+/* 1 Image Special: Allow natural aspect ratio (or limit height if needed) */
+.gallery-grid:has(.gallery-masonry__item:nth-child(1):last-child) .gallery-masonry__item {
+    aspect-ratio: auto;
+    max-height: 80vh;
+}
+
+.gallery-grid .gallery-masonry__item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* 1 Image Special: Contain logic to prevent cropping if preferred, or cover for impact */
+.gallery-grid:has(.gallery-masonry__item:nth-child(1):last-child) .gallery-masonry__item img {
+    object-fit: contain;
+    background-color: #f3f4f6; /* Optional bg for non-square single images */
+}
+
+
+} /* %scope% */
+
+/* --- GLOBAL STYLES (Lightbox) --- */
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+}
+
+.gallery-lightbox__content {
+    position: relative;
+    z-index: 10;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery-lightbox__img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+.gallery-lightbox__caption {
+    color: #d1d5db;
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* --- Lightbox Actions (Top Right) --- */
+.gallery-lightbox__actions {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gallery-lightbox__action {
+    background: rgba(0,0,0,0.3);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem; /* Size for Times symbol */
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none; /* For the link */
+}
+
+.gallery-lightbox__action:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.gallery-lightbox__action svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.gallery-lightbox__prev,
+.gallery-lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 20;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    transition: background 0.2s;
+
+    &:hover {
+        background: rgba(255,255,255,0.3);
+    }
+}
+
+.gallery-lightbox__prev { left: 1rem; }
+.gallery-lightbox__next { right: 1rem; }
+
+/* Add Vanilla Transition States */
+.gallery-lightbox {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.gallery-slider__image {
+    transition: opacity 0.3s ease-out;
+}
