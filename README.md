@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/aaix/filament-editor-js">
-    <img src="https://raw.githubusercontent.com/aaix/filament-editor-js/main/demo.webp" alt="Filament Editor.js Logo" width="170">
+  <a href="https://github.com/jonaaix/filament-editor-js">
+    <img src="https://raw.githubusercontent.com/jonaaix/filament-editor-js/main/demo.webp" alt="Filament Editor.js Logo" width="170">
   </a>
 </p>
 
