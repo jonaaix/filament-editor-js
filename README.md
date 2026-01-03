@@ -53,7 +53,7 @@ public static function configure(Schema $schema): Schema
 
             // Preview the Server-Side Rendered HTML
             Placeholder::make('html_preview')
-                ->label('Rendered HTML Output (Server-Side)')
+                ->label('Rendered Preview')
                 ->content(function ($get) {
                     $jsonState = $get('content');
 
@@ -61,7 +61,7 @@ public static function configure(Schema $schema): Schema
                     $html = HtmlRenderer::render($jsonState);
 
                     return new HtmlString(
-                        '<div class="prose max-w-none dark:prose-invert border border-dashed border-gray-300 p-8 rounded-lg">' .
+                        '<div style="max-width:50rem;border:1px dashed #d1d5db;padding:2rem;border-radius:0.5rem;">' .
                         $html .
                         '</div>'
                     );
