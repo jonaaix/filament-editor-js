@@ -19,40 +19,24 @@ class HeaderRenderer implements BlockRenderer
     public static function getCss(): string
     {
         return <<<CSS
-            %scope% h1 { 
-                font-size: 2.5em; 
-                font-weight: 800; 
-                line-height: 1.2; 
-                margin: 1.2em 0 0.6em;
-            }
-            
-            %scope% h2 { 
-                font-size: 2em; 
-                font-weight: 700; 
-                line-height: 1.25; 
-                margin: 1.2em 0 0.6em; 
-            }
-            
-            %scope% h3 { 
-                font-size: 1.5em; 
-                font-weight: 700; 
-                line-height: 1.3; 
-                margin: 1.2em 0 0.6em; 
-            }
-            
-            %scope% h4 { 
-                font-size: 1.25em; 
-                font-weight: 600; 
-                line-height: 1.4; 
-                margin: 1.2em 0 0.6em; 
-            }
-            
+            %scope% h1, 
+            %scope% h2, 
+            %scope% h3, 
+            %scope% h4, 
             %scope% h5, 
-            %scope% h6 { 
-                font-size: 1em; 
-                font-weight: 600; 
-                margin: 1.2em 0 0.6em; 
+            %scope% h6 {
+                font-weight: 700;
+                line-height: 1.25;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
             }
+
+            %scope% h1 { font-size: 2.25rem; }
+            %scope% h2 { font-size: 1.875rem; }
+            %scope% h3 { font-size: 1.5rem; }
+            %scope% h4 { font-size: 1.25rem; }
+            %scope% h5 { font-size: 1.125rem; }
+            %scope% h6 { font-size: 1rem; }
         CSS;
     }
 
