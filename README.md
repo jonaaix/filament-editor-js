@@ -46,27 +46,29 @@ use Illuminate\Support\HtmlString;
 
 public static function configure(Schema $schema): Schema
 {
-    return $schema
-        ->schema([
-            EditorJs::make('content')
-                ->columnSpanFull(),
-
-            // Preview the Server-Side Rendered HTML
-            Placeholder::make('html_preview')
-                ->label('Rendered Preview')
-                ->content(function ($get) {
-                    $jsonState = $get('content');
-
-                    // Renders structured HTML from Editor.js JSON
-                    $html = HtmlRenderer::render($jsonState);
-
-                    return new HtmlString(
-                        '<div style="max-width:50rem;border:1px dashed #d1d5db;padding:2rem;border-radius:0.5rem;">' .
-                        $html .
-                        '</div>'
-                    );
-                })
-                ->columnSpanFull(),
+   return $schema
+      ->schema([
+         Tabs::make('description_tabs')
+            ->tabs([
+               Tab::make(__('Editor'))
+                  ->schema([
+                     EditorJs::make('description')
+                        ->required()
+                        ->label(__('Description'))
+                        ->columnSpanFull(),
+                  ]),
+               Tab::make(__('Preview'))
+                  ->schema([
+                     Placeholder::make('html_preview')
+                        ->hiddenLabel()
+                        ->columnSpanFull()
+                        ->content(function ($get) {
+                           $jsonState = $get('description');
+                           $html = HtmlRenderer::render($jsonState);
+                           return new HtmlString("<div style='max-width:45rem;padding:0 2rem;'>{$html}</div>");
+                        }),
+                  ]),
+            ]),
         ]);
 }
 ```
