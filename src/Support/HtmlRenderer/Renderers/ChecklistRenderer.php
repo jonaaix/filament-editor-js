@@ -57,7 +57,7 @@ class ChecklistRenderer implements BlockRenderer
                 }
             }
             %scope% .checklist-box svg { width: 80%; height: 80%; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-            %scope% .checklist-item--checked .checklist-text { opacity: 0.7; text-decoration: line-through; }
+            %scope% .checklist-item--checked .checklist-text { opacity: 0.7; }
         CSS;
     }
 
