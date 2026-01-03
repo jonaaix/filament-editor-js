@@ -102,7 +102,7 @@ Route::get('/api/posts/{post}', function (Post $post) {
 ## Configuration
 ### Image Upload location
 The plugin will automatically create a scalable directory structure for all uploaded images and also creates different
-image sizes for the gallery block, using srcset attributes.
+image sizes for the gallery block, used in srcset attributes.
 ```php
 use Aaix\FilamentEditorJs\Forms\Components\EditorJs;
 EditorJs::make('content')

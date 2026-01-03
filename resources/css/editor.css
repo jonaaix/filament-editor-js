@@ -1,7 +1,7 @@
 .filament-editorjs-box {
     border: 1px solid #d1d5db;
     border-radius: 0.5rem;
-    padding: 1.5rem 0;
+    padding: 1rem 2.5rem;
     min-height: 150px;
     background-color: #ffffff;
 
@@ -48,7 +48,7 @@
     }
 
     .codex-editor__redactor {
-        padding-bottom: 2rem !important;
+        padding-bottom: 0rem !important;
     }
 
     .accordion-wrapper {

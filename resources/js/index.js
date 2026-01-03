@@ -93,8 +93,8 @@ document.addEventListener('alpine:init', () => {
                         disableAnimation: false,
                         overrides: {
                             styles: {
-                                blockContent: 'border-left: 1px solid #ccc; border-right: 1px solid #ccc;',
-                                lastBlockContent: 'border-bottom: 1px solid #ccc; margin-bottom: 1rem;',
+                                blockContent: 'border-left: 1px solid #ccc;border-right: 1px solid #ccc;',
+                                lastBlockContent: 'border-bottom: 1px solid #ccc;margin-bottom: 1rem;',
                                 insideContent: 'background-color: #e9e0c324;',
                             },
                         },
