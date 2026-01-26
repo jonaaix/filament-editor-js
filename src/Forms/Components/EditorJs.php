@@ -22,6 +22,7 @@ class EditorJs extends Field
         'code',
         'collapsible',
         'gallery',
+        'alert',
     ];
 
     protected string|Closure|null $placeholder = null;
@@ -31,6 +32,7 @@ class EditorJs extends Field
     public function tools(array $tools): static
     {
         $this->tools = $tools;
+
         return $this;
     }
 
@@ -42,6 +44,7 @@ class EditorJs extends Field
     public function placeholder(string|Closure|null $placeholder): static
     {
         $this->placeholder = $placeholder;
+
         return $this;
     }
 
@@ -53,12 +56,14 @@ class EditorJs extends Field
     public function imageDisk(string|Closure|null $disk): static
     {
         $this->imageDisk = $disk;
+
         return $this;
     }
 
     public function imageDirectory(string|Closure|null $directory): static
     {
         $this->imageDirectory = $directory;
+
         return $this;
     }
 
@@ -106,6 +111,7 @@ class EditorJs extends Field
                 'delimiter' => __('filament-editor-js::editorjs.tool_names.delimiter'),
                 'collapsible' => __('filament-editor-js::editorjs.tool_names.collapsible'),
                 'table' => __('filament-editor-js::editorjs.tool_names.table'),
+                'alert' => __('filament-editor-js::editorjs.tool_names.alert') ?? 'Alert',
                 'gallery' => __('filament-editor-js::editorjs.tool_names.gallery') ?? 'Gallery',
             ],
             'tools' => [

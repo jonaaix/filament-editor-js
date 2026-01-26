@@ -9,6 +9,7 @@ import Delimiter from '@editorjs/delimiter';
 import CodeTool from '@editorjs/code';
 import Accordion from 'editorjs-collapsible-block';
 import Gallery from '@kiberpro/editorjs-gallery';
+import Alert from 'editorjs-alert';
 import Sortable from 'sortablejs';
 
 document.addEventListener('alpine:init', () => {
@@ -80,6 +81,15 @@ document.addEventListener('alpine:init', () => {
                 code: {
                     class: CodeTool,
                     toolbox: { title: i18n.toolNames?.code || 'Code' }
+                },
+                alert: {
+                    class: Alert,
+                    inlineToolbar: true,
+                    toolbox: { title: i18n.toolNames?.alert || 'Alert' },
+                    config: {
+                        defaultType: 'info',
+                        alertTypes: ['primary', 'secondary', 'info', 'success', 'warning', 'danger', 'light', 'dark'],
+                    }
                 },
                 collapsible: {
                     class: Accordion,

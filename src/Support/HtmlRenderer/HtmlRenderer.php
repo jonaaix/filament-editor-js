@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aaix\FilamentEditorJs\Support\HtmlRenderer;
 
 use Aaix\FilamentEditorJs\Support\HtmlRenderer\Contracts\BlockRenderer;
+use Aaix\FilamentEditorJs\Support\HtmlRenderer\Renderers\AlertRenderer;
 use Aaix\FilamentEditorJs\Support\HtmlRenderer\Renderers\CollapsibleRenderer;
 use Aaix\FilamentEditorJs\Support\HtmlRenderer\Renderers\ChecklistRenderer;
 use Aaix\FilamentEditorJs\Support\HtmlRenderer\Renderers\CodeRenderer;
@@ -32,6 +33,7 @@ class HtmlRenderer
         'delimiter' => DelimiterRenderer::class,
         'table' => TableRenderer::class,
         'code' => CodeRenderer::class,
+        'alert' => AlertRenderer::class,
         'collapsible' => CollapsibleRenderer::class,
         'gallery' => GalleryRenderer::class,
     ];

@@ -22,6 +22,7 @@
         "@editorjs/quote": "^2.7.6",
         "@editorjs/table": "^2.4.5",
         "@kiberpro/editorjs-gallery": "^1.3.0",
+        "editorjs-alert": "^1.1.4",
         "editorjs-collapsible-block": "^1.0.1",
         "sortablejs": "^1.15.6"
     }

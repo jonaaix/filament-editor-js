@@ -23,6 +23,7 @@ return [
         'collapsible' => 'Collapsible',
         'delimiter' => 'Delimiter',
         'table' => 'Table',
+        'alert' => 'Alert',
         'gallery' => 'Gallery',
     ],
     'tools' => [
