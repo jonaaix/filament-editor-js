@@ -132,7 +132,7 @@ The editor comes pre-configured with the following block tools:
 
 * **Typography:** Header, Paragraph, Quote, Code, Delimiter.
 * **Lists:** Unordered, Ordered, Checklist.
-* **Structure:** Table, Collapsible (Accordion).
+* **Structure:** Table, Collapsible (Accordion), Alert.
 * **Media:** Gallery (Masonry & Slider layouts with Lightbox).
 
 ```
@@ -146,6 +146,7 @@ The editor comes pre-configured with the following block tools:
 @editorjs/table
 @kiberpro/editorjs-gallery
 editorjs-collapsible-block
+editorjs-alert
 ```
 
 ## Contributing
