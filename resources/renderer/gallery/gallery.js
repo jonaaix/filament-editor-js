@@ -298,8 +298,7 @@
     };
 
     // Auto-Init on Load
-    document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
         document.querySelectorAll('.aaix-gallery-block').forEach(el => new AaixGallery(el));
-    });
-
+    }, 200);
 })();
