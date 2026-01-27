@@ -41,6 +41,7 @@ class ChecklistRenderer implements BlockRenderer
                 width: 1.35em;
                 height: 1.35em;
                 margin-right: 0.75em;
+                margin-left: 0.75em;
                 border: 1px solid rgba(145,145,145, 1);
                 border-radius: 4px;
                 display: flex;
