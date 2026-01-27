@@ -1,6 +1,9 @@
 (function () {
-    // Prevent double initialization
-    if (window.AaixGalleryInitialized) return;
+    if (window.AaixGalleryInitialized) {
+        console.warn('AaixGallery: Already initialized');
+    } else {
+        console.log('AaixGallery: Initializing');
+    }
     window.AaixGalleryInitialized = true;
 
     class AaixGallery {
@@ -149,10 +152,10 @@
                 });
 
                 // Auto scroll thumbs
-                const activeBtn = this.sliderThumbs.children[this.activeIndex];
-                if (activeBtn) {
-                    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
+                // const activeBtn = this.sliderThumbs.children[this.activeIndex];
+                // if (activeBtn) {
+                //     activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                // }
             }
         }
 
