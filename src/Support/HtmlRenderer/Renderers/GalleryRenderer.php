@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aaix\FilamentEditorJs\Support\HtmlRenderer\Renderers;
 
 use Aaix\FilamentEditorJs\Support\HtmlRenderer\Contracts\BlockRenderer;
+use Illuminate\Support\Str;
 
 class GalleryRenderer implements BlockRenderer
 {
@@ -66,6 +67,15 @@ class GalleryRenderer implements BlockRenderer
                 'height'  => $img['height'] ?? 0,
             ];
         }, $images);
+
+        foreach ($jsImages as &$image) {
+            foreach ($image as &$value) {
+                if (is_string($value) && Str::startsWith($value, '/') && !Str::startsWith($value, '//')) {
+                    $value = rtrim(config('app.url'), '/') . $value;
+                }
+            }
+        }
+        unset($image, $value);
 
         $jsonImages = htmlspecialchars(json_encode($jsImages), ENT_QUOTES, 'UTF-8');
 
